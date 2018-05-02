@@ -6,7 +6,7 @@ from flask import request
 from flask import Response
 from flask_pymongo import PyMongo
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 app.config['MONGO_DBNAME'] = 'flasklogin'
 app.config['MONGO_URI'] = 'mongodb+srv://flaskmongo:flaskmongopass@flasklogin-jdskx.mongodb.net/flasklogin'
@@ -56,5 +56,5 @@ def register():
     return jsonify({'status' : '0', 'message': 'New user created'})
   return jsonify({'status' : -1, 'message': 'username already registered, try using another'})
 
-if _name_ == '_main_':
+if __name__ == '__main__':
   app.run(debug=True)
