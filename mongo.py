@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 app.config['MONGO_DBNAME'] = 'flasklogin'
 app.config['MONGO_URI'] = 'mongodb+srv://flaskmongo:flaskmongopass@flasklogin-jdskx.mongodb.net/flasklogin'
-# 'mongodb://pretty:printed@ds021731.mlab.com:21731/mongologinexample'
+
 mongo = PyMongo(app)
 
 @app.route('/login', methods=['POST'])
@@ -36,4 +36,4 @@ def register():
   return jsonify({'status' : -1, 'message': 'username already registered, try using another'})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+  app.run(debug=True)
