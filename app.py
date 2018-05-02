@@ -3,6 +3,7 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
+from flask import Response
 from flask_pymongo import PyMongo
 
 app = Flask(__name__)
@@ -12,8 +13,12 @@ app.config['MONGO_URI'] = 'mongodb+srv://flaskmongo:flaskmongopass@flasklogin-jd
 
 mongo = PyMongo(app)
 
-@app.route('/login', methods=['POST'])
-def login():
+@app.route('/')
+def index():
+    return Response('Vates')
+
+@app.route('/autenticar', methods=['POST', 'GET'])
+def autenticar():
   users = mongo.db.users
   name = request.json['name']
   password = request.json['password']
@@ -36,4 +41,4 @@ def register():
   return jsonify({'status' : -1, 'message': 'username already registered, try using another'})
 
 if __name__ == '__main__':
-  app.run()
+  app.run(debug=True)
