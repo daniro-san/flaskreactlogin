@@ -35,7 +35,7 @@ def autenticar():
 
       # name = parametros['name']
       # password = parametros['password']
-      return jsonify({'retorno': request})
+      return str(request)
 
     else:
       
