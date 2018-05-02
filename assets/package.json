@@ -1,4 +1,5 @@
 {
+  "homepage": "https://flasklogin.herokuapp.com/assets",
   "name": "assets",
   "version": "0.1.0",
   "private": true,
