@@ -1,4 +1,4 @@
-# mongo.py
+# app.py
 
 from flask import Flask
 from flask import jsonify
@@ -36,4 +36,4 @@ def register():
   return jsonify({'status' : -1, 'message': 'username already registered, try using another'})
 
 if __name__ == '__main__':
-  app.run(debug=True)
+  app.run()
