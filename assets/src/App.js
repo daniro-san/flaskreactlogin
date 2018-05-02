@@ -16,10 +16,9 @@ class App extends React.Component {
 
     const apiCall = await fetch('https://flasklogin.herokuapp.com/autenticar', {
       method: 'POST',
+      mode: 'no-cors',
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin" : "*",
       },
       body: JSON.stringify({
         "name": user,

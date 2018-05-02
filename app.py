@@ -1,5 +1,3 @@
-# app.py
-
 import os
 
 from flask import Flask
@@ -8,7 +6,7 @@ from flask import request
 from flask import Response
 from flask_pymongo import PyMongo
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 app.config['MONGO_DBNAME'] = 'flasklogin'
 app.config['MONGO_URI'] = 'mongodb+srv://flaskmongo:flaskmongopass@flasklogin-jdskx.mongodb.net/flasklogin'
@@ -21,14 +19,30 @@ def index():
 
 @app.route('/autenticar', methods=['POST', 'GET'])
 def autenticar():
-  users = mongo.db.users
-  name = request.json['name']
-  password = request.json['password']
-  login_user = users.find_one({ 'name' : name, 'password': password })
-  
-  if login_user: 
-    return jsonify({'status' : '0', 'message': 'Login successful'})
-  return jsonify({'status' : -1, 'message': 'username or password invalid'})
+  try:
+
+    users = mongo.db.users
+    
+
+    if request.method == 'POST':
+
+      name = request.json['name']
+      password = request.json['password']      
+
+    else:
+      
+      name = request.args.get('name')
+      password = request.args.get('password')
+
+    autenticacao = users.find_one({ 'name' : name, 'password': password })
+    if autenticacao: 
+      return jsonify({'status' : '0', 'message': 'Login successful'})
+
+    return jsonify({'status' : -1, 'message': 'username or password invalid'})
+
+  except Exception as e:
+      print('REQUEST /autenticar error ' + str(e) )
+      return str(e)
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -42,5 +56,5 @@ def register():
     return jsonify({'status' : '0', 'message': 'New user created'})
   return jsonify({'status' : -1, 'message': 'username already registered, try using another'})
 
-if __name__ == '__main__':
+if _name_ == '_main_':
   app.run(debug=True)
