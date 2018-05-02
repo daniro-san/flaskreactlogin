@@ -14,12 +14,12 @@ class App extends React.Component {
     const user = e.target.elements.username.value;
     const password = e.target.elements.password.value;
 
-    const apiCall = await fetch('http://192.168.1.6:5000/login', {
+    const apiCall = await fetch('https://flasklogin.herokuapp.com/login', {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
       },
       body: JSON.stringify({
         "name": user,
