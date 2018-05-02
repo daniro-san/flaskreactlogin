@@ -31,10 +31,11 @@ def autenticar():
       name = 'abc'
       password = 'abc'
 
-      parametros = request.get_json()
+      # parametros = request.get_json()
 
-      name = parametros['name']
-      password = parametros['password']
+      # name = parametros['name']
+      # password = parametros['password']
+      return jsonify({'retorno': request})
 
     else:
       
