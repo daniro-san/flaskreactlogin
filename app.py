@@ -1,5 +1,7 @@
 # app.py
 
+import os
+
 from flask import Flask
 from flask import jsonify
 from flask import request
@@ -41,4 +43,5 @@ def register():
   return jsonify({'status' : -1, 'message': 'username already registered, try using another'})
 
 if __name__ == '__main__':
-  app.run(debug=True)
+  port = int(os.environ.get("PORT", 5000))
+  app.run(debug=True,port=port)
