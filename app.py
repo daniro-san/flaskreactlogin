@@ -31,7 +31,10 @@ def autenticar():
       name = 'abc'
       password = 'abc'
 
-      print(str(request.get_json()))
+      parametros = request.get_json()
+
+      name = parametros['name']
+      password = parametros['password']
 
     else:
       
