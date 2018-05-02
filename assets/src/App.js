@@ -13,6 +13,9 @@ class App extends React.Component {
 
     const user = e.target.elements.username.value;
     const password = e.target.elements.password.value;
+    const form = new FormData();
+    form.append('name', user); 
+    form.append('password', password); 
 
     // const apiCall = await fetch(`https://flasklogin.herokuapp.com/autenticar?name=${user}&password=${password}`);
     const apiCall = await fetch('https://flasklogin.herokuapp.com/autenticar', {
@@ -21,10 +24,7 @@ class App extends React.Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        "name": user,
-        "password": password,
-      })
+      body: form
     });
     const data = await apiCall.json();
 

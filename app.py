@@ -26,16 +26,15 @@ def autenticar():
 
     if request.method == 'POST':
 
-      # name = request.form['name']
-      # password = request.form['password']   
-      name = 'abc'
-      password = 'abc'
+      name = request.form['name']
+      password = request.form['password']   
+      # name = 'abc'
+      # password = 'abc'
 
       # parametros = request.get_json()
 
       # name = parametros['name']
       # password = parametros['password']
-      return jsonify({'retorno': jsonify(request)})
 
     else:
       
