@@ -14,18 +14,18 @@ class App extends React.Component {
     const user = e.target.elements.username.value;
     const password = e.target.elements.password.value;
 
-    const apiCall = await fetch(`https://flasklogin.herokuapp.com/autenticar?name=${user}&password=${password}`);
-    // const apiCall = await fetch('https://flasklogin.herokuapp.com/autenticar', {
-    //   method: 'POST',
-    //   mode: 'no-cors',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     "name": user,
-    //     "password": password,
-    //   })
-    // });
+    // const apiCall = await fetch(`https://flasklogin.herokuapp.com/autenticar?name=${user}&password=${password}`);
+    const apiCall = await fetch('https://flasklogin.herokuapp.com/autenticar', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "name": user,
+        "password": password,
+      })
+    });
     const data = await apiCall.json();
 
     if(user && password) {

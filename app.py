@@ -26,8 +26,12 @@ def autenticar():
 
     if request.method == 'POST':
 
-      name = request.form['name']
-      password = request.form['password']      
+      # name = request.form['name']
+      # password = request.form['password']   
+      name = 'abc'
+      password = 'abc'
+
+      print(str(request.form))
 
     else:
       
